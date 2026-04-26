@@ -1,0 +1,78 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
+}
+
+android {
+    namespace 'com.example.fittrackapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.fittrackapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.firebase.auth
+    implementation libs.googleid
+
+    // FORCING STABLE VERSIONS TO PREVENT AGP 8.6.0 ERRORS
+    implementation('androidx.credentials:credentials') {
+        version { strictly '1.2.2' }
+    }
+    implementation('androidx.credentials:credentials-play-services-auth') {
+        version { strictly '1.2.2' }
+    }
+    implementation('androidx.core:core-ktx') {
+        version { strictly '1.13.1' }
+    }
+    implementation('androidx.core:core') {
+        version { strictly '1.13.1' }
+    }
+    implementation('androidx.activity:activity') {
+        version { strictly '1.9.0' }
+    }
+
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
+
+
+
+
+
+/* dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation libs.firebase.auth
+    implementation libs.credentials
+    implementation libs.credentials.play.services.auth
+    implementation libs.googleid
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+} */
